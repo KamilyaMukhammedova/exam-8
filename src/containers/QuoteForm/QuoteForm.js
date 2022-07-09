@@ -42,9 +42,10 @@ const QuoteForm = ({history}) => {
           <select
             className="form-control"
             name="category"
-            value={quote.category}
+            defaultValue={quote.category}
             onChange={onChange}
           >
+            <option value="" disabled>Choose here</option>
             {CATEGORY.map(category => (
               <option value={category.id} key={category.id}>{category.title}</option>
             ))}
