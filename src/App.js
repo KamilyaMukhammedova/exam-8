@@ -11,6 +11,7 @@ function App() {
         <Route path="/" exact component={Categories}/>
         <Route path="/quotes" component={Categories}/>
         <Route path="/add-quote" component={QuoteForm}/>
+        <Route path="/:id/edit" component={QuoteForm}/>
         <Route render={() => <h1>Not found</h1>}/>
       </Switch>
     </BrowserRouter>

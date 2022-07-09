@@ -6,14 +6,14 @@ import QuotesByCategory from "../../components/QuotesByCategory/QuotesByCategory
 
 const Categories = () => {
   return (
-    <div className="row justify-content-around">
+    <div className="row justify-content-center">
       <div className="col-4 p-5">
         <ul>
-          <li>
-            <NavLink to="/quotes/all" className="navLink">All</NavLink>
+          <li className="mb-3">
+            <NavLink to="/quotes/all" className="navLink" activeStyle={{color: 'red'}}>All</NavLink>
           </li>
           {CATEGORY.map(category => (
-            <li key={category.id}>
+            <li key={category.id} className="mb-3">
               <NavLink
                 to={`/quotes/${category.id}`}
                 className="navLink"
@@ -25,14 +25,12 @@ const Categories = () => {
           ))}
         </ul>
       </div>
-
-      <div className="col-8">
+      <div className="col-6" style={{overflow: 'scroll', height: '90vh'}}>
         <Switch>
           <Route path="/quotes/all" exact render={() => <AllQuotes/>}/>
           <Route path="/quotes/:category" render={() => <QuotesByCategory/>}/>
         </Switch>
       </div>
-
     </div>
   );
 };

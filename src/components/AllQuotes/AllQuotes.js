@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axiosApi from "../../axiosApi";
-import {useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const AllQuotes = () => {
   const [quotes, setQuotes] = useState(null);
-  const history = useHistory();
 
   useEffect(() => {
     const fetchQuotes = async () => {
@@ -15,7 +14,6 @@ const AllQuotes = () => {
         alert(e.message);
       }
     };
-
     fetchQuotes().catch(e => console.error(e));
   }, []);
 
@@ -36,7 +34,9 @@ const AllQuotes = () => {
           <p>" {quotes[quote].text} "</p>
           <p>{quotes[quote].author}</p>
           <div className="text-right">
-            <button type="button" className="btn btn-success mr-2">Edit</button>
+            <button type="button" className="btn btn-success mr-2">
+              <NavLink to={`/${quote}/edit`} className="navLink">Edit</NavLink>
+            </button>
             <button
               type="button"
               className="btn btn-danger"
@@ -46,7 +46,7 @@ const AllQuotes = () => {
             </button>
           </div>
         </div>
-      ))}
+      )).reverse()}
     </div>
   );
 };

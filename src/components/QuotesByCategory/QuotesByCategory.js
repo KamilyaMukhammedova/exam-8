@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axiosApi from "../../axiosApi";
-import {useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 
 const QuotesByCategory = () => {
   const [quotes, setQuotes] = useState(null);
@@ -31,12 +31,15 @@ const QuotesByCategory = () => {
 
   return quotes && (
     <div className="mt-5">
+      <h3>{category.toUpperCase()}</h3>
       {Object.keys(quotes).map(quote => (
         <div className="alert alert-success m-2" key={quote}>
           <p>" {quotes[quote].text} "</p>
           <p>{quotes[quote].author}</p>
           <div className="text-right">
-            <button type="button" className="btn btn-dark mr-2">Edit</button>
+            <button type="button" className="btn btn-dark mr-2">
+              <NavLink to={`/${quote}/edit`} className="navLink">Edit</NavLink>
+            </button>
             <button
               type="button"
               className="btn btn-danger"
@@ -46,7 +49,7 @@ const QuotesByCategory = () => {
             </button>
           </div>
         </div>
-      ))}
+      )).reverse()}
     </div>
   );
 };
