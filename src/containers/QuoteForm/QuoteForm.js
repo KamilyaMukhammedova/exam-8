@@ -26,7 +26,7 @@ const QuoteForm = ({history}) => {
         category: quote.category,
         text: quote.text
       });
-      history.push('/');
+      history.push('/quotes/all');
     } catch (e) {
       alert('Something gone wrong!');
       console.error(e);
@@ -78,7 +78,7 @@ const QuoteForm = ({history}) => {
             Save
           </button>
         </form>
-    </div>
+      </div>
   );
 };
 
